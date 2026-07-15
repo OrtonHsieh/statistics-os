@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="政大 MBA 商業數量方法 Chapters 12–18 考試學習系統">
   <title>Statistics OS · Exam Edition</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="question-bank.css">
+  <link rel="stylesheet" href="styles.css?v=20260715b">
+  <link rel="stylesheet" href="question-bank.css?v=20260715b">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},startup:{typeset:false}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -53,7 +53,7 @@
     <section class="view" id="practice">
       <div class="page-head"><div><p class="eyebrow">PRACTICE CENTER</p><h1>先作答，再看解析</h1><p>所有題目保留來源、解答信心與完整判斷鏈。</p></div><button class="secondary" id="simulationBtn">模擬考設定</button></div>
       <div class="practice-layout">
-        <aside class="filter-card card"><h3>快速定位題目</h3><div class="locator-grid"><label>Chapter<select id="filterChapter"><option value="all">全部章節</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option></select></label><label>題型<select id="filterSection"><option value="all">全部題型</option><option>Multiple Choice</option><option>Problem</option></select></label></div><label>題號<input id="filterNumber" type="number" min="1" inputmode="numeric" placeholder="例如：20"></label><button class="primary wide" id="locateQuestion">前往指定題號</button><hr><label>主題<select id="filterTopic"><option value="all">全部主題</option></select></label><label>解答狀態<select id="filterAnswerStatus"><option value="all">全部狀態</option><option value="verified">已重新驗證</option><option value="pending-verification">待驗證</option></select></label><label class="check"><input id="filterWrong" type="checkbox">只看錯題</label><label class="check"><input id="filterFavorite" type="checkbox">只看收藏</label><label class="check"><input id="filterIncomplete" type="checkbox">尚未完成</label><button class="secondary wide" id="clearFilters">清除篩選</button><div class="question-list" id="questionList"></div></aside>
+        <aside class="filter-card card"><h3>快速定位題目</h3><div class="locator-grid"><label>Chapter<select id="filterChapter"><option value="all">全部章節</option><option>12</option><option>13</option><option>14</option><option>15</option><option>16</option><option>17</option><option>18</option></select></label><label>題型<select id="filterSection"><option value="all">全部題型</option><option>Multiple Choice</option><option>Problem</option></select></label></div><label>題號<input id="filterNumber" type="number" min="1" inputmode="numeric" placeholder="例如：20"></label><button class="primary wide" id="locateQuestion">前往指定題號</button><hr><label>主題<select id="filterTopic"><option value="all">全部主題</option></select></label><label>解答狀態<select id="filterAnswerStatus"><option value="all">全部狀態</option><option value="verified">已重新驗證</option><option value="pending-verification">待驗證</option><option value="source-error">原題有誤</option></select></label><label class="check"><input id="filterWrong" type="checkbox">只看錯題</label><label class="check"><input id="filterFavorite" type="checkbox">只看收藏</label><label class="check"><input id="filterIncomplete" type="checkbox">尚未完成</label><button class="secondary wide" id="clearFilters">清除篩選</button><div class="question-list" id="questionList"></div></aside>
         <div id="questionWorkspace" class="question-workspace"></div>
       </div>
     </section>
@@ -72,5 +72,5 @@
   </main>
   <div class="modal" id="simulationModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close>×</button><span class="label">SIMULATION MODE</span><h2>建立限時模擬考</h2><label>題數<select id="simCount"><option>5</option><option>10</option><option>15</option></select></label><label>時間<select id="simMinutes"><option>10</option><option>20</option><option>30</option></select></label><button class="primary wide" id="startSimulation">開始模擬考</button></div></div>
   <div class="toast" id="toast"></div>
-  <script src="question-bank.js"></script><script src="data.js"></script><script src="answers.js"></script><script src="app.js"></script>
+  <script src="question-bank.js?v=20260715b"></script><script src="data.js?v=20260715b"></script><script src="answers.js?v=20260715b"></script><script src="app.js?v=20260715b"></script>
 </body></html>

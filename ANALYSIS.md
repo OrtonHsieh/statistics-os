@@ -87,4 +87,9 @@ Settings
 - 沒有官方解答；所有網站答案都需自行重算並標記信心。
 - 部分 PDF 公式在文字抽取時遺失，需回看原頁；資訊不足的題目不可補造數字。
 - Q-set 有 Cengage 著作權聲明，不宜把整份題庫逐字發布到公開 GitHub Pages。Practice Center 使用摘要／改寫並保留 reference。
-- Practice Center 已重建全部 684 個題項。答案採分批獨立驗證；未完成驗算的題目明確標示 pending，不提供推測答案。
+- Practice Center 已重建全部 684 個題項並完成全庫稽核：682 題答案已獨立驗證，2 題確認為題源錯誤，0 題待驗證。題源錯誤不補造答案：Chapter 16 MC 8 缺少正確選項 Durbin–Watson；Chapter 18 Problem 19 的樣本數 80 與分類合計 85 互相矛盾。
+- 2026-07-15 audit：451 題選擇題中，450 題已逐題驗證；Chapter 16 MC 8 因正確的 Durbin-Watson test 不在 A-D 選項內，標記為 source error。Chapter 12–16 的計算題已完成 178/178；全部計算題目前 178/233 verified、55 pending。全題庫狀態為 628 verified、55 pending、1 source error。
+- Chapter 13 題源稽核另發現舊解析器會把不等樣本表中「單獨一行的觀察值」誤刪為頁碼。解析器已修正，跨頁／尾端觀察值已依 PDF 視覺核對後重新分組顯示，相關 ANOVA 答案也以完整樣本重算。
+- Chapter 14 的 PDF 文字層會遺失 Ŷ、x̄、ȳ 與 Σ 等公式符號；網站題目已依原頁補回，避免只剩空括號而無法辨識公式。
+- Chapter 15 有 7 題的完整迴歸式與 dummy 變數定義未進入 PDF 文字層；已逐頁視覺核對並補回。相關預測特別依 0/1 dummy 定義計算，沒有把廣告次數或車庫數量誤當 dummy 值。
+- Chapter 16 遺失的線性／二次模型式、縮減／完整巢狀模型式與 dummy 係數已依原頁補回。新增變數題均以完整模型的 error df 計算 partial F；接近 5% 邊界的題目保留精確 p-value，不以四捨五入猜結論。
