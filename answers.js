@@ -6,12 +6,14 @@ const addMC=(chapter,number,letter,note='Definition or calculation independently
 
 // Chapter 12: verified against the definitions/calculations and the publicly
 // available matching answer-key preview for the same test-bank edition.
-['A','D','B','D','C','A','C','B','D','D','D','D','C','A','A','B','A','C','D','A','D','B','C','A','A','D','D','C','C','A','B','B','C','C','D','D','D','A','A','C','C','B','A','A','D','B','A'].forEach((a,i)=>addMC(12,i+1,a));
+['A','D','B','D','C','A','C','B','D','D','D','D','C','A','A','B','A','C','D','A','D','B','C','A','A','D','D','C','C','A','B','B','C','C','D','D','D','A','A','C','C','B','A','A','D','D','A'].forEach((a,i)=>addMC(12,i+1,a));
+addMC(12,46,'D','Under a uniform distribution, each expected count is 300/3=100. χ²=(100−100)²/100+(120−100)²/100+(80−100)²/100=0+4+4=8.');
 
 // Chapter 13: definitions, ANOVA identities, and every numerical exhibit
 // independently recomputed; cross-checked with the matching public Cognero
 // answer-key preview where the same item was available.
-['B','B','C','D','A','A','B','C','D','A','A','B','C','B','B','C','B','C','A','C','D','B','C','B','D','B','D','D','B','D','B','D','B','A','B','B','C','B','A','B','B','D','C','B','A','B','B','D','A','C','B','B','D','B','D','D','C','C','D','B','D','C','B','A','D','D','B','C'].forEach((a,i)=>addMC(13,i+1,a));
+['B','D','C','D','A','A','B','C','D','A','A','B','C','B','B','C','B','C','A','C','D','B','C','B','D','B','D','D','B','D','B','D','B','A','B','B','C','B','A','B','B','D','C','B','A','B','B','D','A','C','B','B','D','B','D','D','C','C','D','B','D','C','B','A','D','D','B','C'].forEach((a,i)=>addMC(13,i+1,a));
+addMC(13,2,'D','ANOVA uses sample data to test a hypothesis about population means: H₀: μ₁=μ₂=⋯=μₖ. Therefore it determines whether the means of two or more populations are equal, not whether observed sample means are exactly equal.');
 
 // Chapter 14: all definitions and numerical exhibits independently checked.
 ['A','A','C','D','A','C','A','C','B','A','D','C','A','B','A','D','C','D','A','B','B','C','A','B','B','B','B','D','A','B','B','C','D','B','A','D','A','D','D','A','C','D','B','A','B','A','B','D','A','D','D','B','B','B','C','D','D','D','B','D','D','B','D','B','A','C','A','B','B','C','C','C','C','B','D','A','D','A','B','A','C','B','B','A','D','D','A','D','B','A','C','D','B','B','C','D','C','D','A','C','A','B','D','D','A','A','C','A','D','A','C','B'].forEach((a,i)=>addMC(14,i+1,a));
