@@ -186,6 +186,16 @@ CH17_FORMULA_REPAIRS = {
     7: [('Use  = 0.3', 'Use α = 0.3'), ('Use  = 0.1', 'Use α = 0.1'), ('which  provides', 'which α provides')],
 }
 
+# Symbol-font characters in some multiple-choice options are visible in the
+# PDF but are dropped or mis-decoded by pypdf. Keep these source-faithful
+# repairs keyed by chapter and question so regenerated data stays correct.
+MC_TEXT_REPAIRS = {
+    (13, 18): [
+        ('a.\nb. between-samples estimate of \nc. within-samples estimate of ',
+         'a. x̄\nb. between-samples estimate of σ²\nc. within-samples estimate of σ²'),
+    ],
+}
+
 
 def clean_page(text: str) -> str:
     lines = []
@@ -290,6 +300,12 @@ def parse_chapter(chapter: int, path: Path) -> list[dict]:
                 for pos, page in page_marks if pos < problem_match.start()]
     mc = split_numbered(mc_without_exhibits, 'mc', chapter, mc_marks or [(0, 1)])
     for record in mc:
+        for old, new in MC_TEXT_REPAIRS.get((chapter, record['number']), []):
+            if old not in record['text']:
+                raise RuntimeError(
+                    f"Chapter {chapter} MC {record['number']} text repair no longer matches source extraction"
+                )
+            record['text'] = record['text'].replace(old, new, 1)
         ref = re.search(r'Refer to\s+(Exhibit\s+\d+[-–]\d+)', record['text'], re.I)
         if ref:
             key = re.sub(r'-(?:0+)(\d+)$', r'-\1', ref.group(1).replace('–', '-').lower())
