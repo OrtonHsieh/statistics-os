@@ -12,8 +12,12 @@ addMC(12,46,'D','Under a uniform distribution, each expected count is 300/3=100.
 // Chapter 13: definitions, ANOVA identities, and every numerical exhibit
 // independently recomputed; cross-checked with the matching public Cognero
 // answer-key preview where the same item was available.
-['B','D','C','D','A','A','B','C','D','A','A','B','C','B','B','C','B','C','A','C','D','B','C','B','D','B','D','D','B','D','B','D','B','A','B','B','C','B','A','B','B','D','C','B','A','B','B','D','A','C','B','B','D','B','D','D','C','C','D','B','D','C','B','A','D','D','B','C'].forEach((a,i)=>addMC(13,i+1,a));
+['B','D','D','B','C','C','B','C','D','A','A','B','C','B','B','C','B','C','A','C','D','B','C','B','D','B','D','D','B','D','B','D','B','A','B','B','C','B','A','B','B','D','C','B','A','B','B','D','A','C','B','B','D','B','D','D','C','C','D','B','D','C','B','A','D','D','B','C'].forEach((a,i)=>addMC(13,i+1,a));
 addMC(13,2,'D','ANOVA uses sample data to test a hypothesis about population means: H₀: μ₁=μ₂=⋯=μₖ. Therefore it determines whether the means of two or more populations are equal, not whether observed sample means are exactly equal.');
+addMC(13,3,'D','The variable whose levels define the populations or treatments is the factor. The response being measured is the dependent variable, not the factor.');
+addMC(13,4,'B','Treatments are the different levels or settings of the factor. For example, if the factor is advertising medium, television, radio, and online are its treatments.');
+addMC(13,5,'C','An interaction occurs when the effect of one factor on the response changes depending on the level of another factor.');
+addMC(13,6,'C','A completely randomized design randomly assigns experimental units to treatments. A randomized block design first groups similar units into blocks, which this question does not describe.');
 
 // Chapter 14: all definitions and numerical exhibits independently checked.
 ['A','A','C','D','A','C','A','C','B','A','D','C','A','B','A','D','C','D','A','B','B','C','A','B','B','B','B','D','A','B','B','C','D','B','A','D','A','D','D','A','C','D','B','A','B','A','B','D','A','D','D','B','B','B','C','D','D','D','B','D','D','B','D','B','A','C','A','B','B','C','C','C','C','B','D','A','D','A','B','A','C','B','B','A','D','D','A','D','B','A','C','D','B','B','C','D','C','D','A','C','A','B','D','D','A','A','C','A','D','A','C','B'].forEach((a,i)=>addMC(14,i+1,a));
