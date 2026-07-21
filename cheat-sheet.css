@@ -44,6 +44,44 @@
   opacity: .45;
 }
 
+.topic-progress-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 13px;
+}
+
+.topic-progress-title span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.section-progress + .section-progress {
+  margin-top: 13px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+}
+
+.section-progress p {
+  align-items: baseline;
+  margin-bottom: 4px;
+  font-size: 12px;
+}
+
+.section-progress p span {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.section-progress .progress {
+  margin: 6px 0 0;
+}
+
+.problem-progress i {
+  background: var(--green);
+}
+
 .cheat-head {
   align-items: center;
 }
