@@ -3,6 +3,23 @@
   display: none !important;
 }
 
+.metric-link {
+  cursor: pointer;
+  transition: border-color .15s, box-shadow .15s, transform .15s;
+}
+
+.metric-link:hover,
+.metric-link:focus-visible {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 3px var(--blue2), var(--shadow);
+  outline: none;
+  transform: translateY(-1px);
+}
+
+.metric-link small {
+  color: var(--blue);
+}
+
 .cheat-head {
   align-items: center;
 }

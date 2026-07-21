@@ -7,7 +7,7 @@
   <title>Statistics OS · Exam Edition</title>
   <link rel="stylesheet" href="styles.css?v=20260715b">
   <link rel="stylesheet" href="question-bank.css?v=20260715b">
-  <link rel="stylesheet" href="cheat-sheet.css?v=20260720a">
+  <link rel="stylesheet" href="cheat-sheet.css?v=20260721a">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},startup:{typeset:false}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -39,7 +39,7 @@
         <article class="metric card"><span class="label">已完成題目</span><strong id="completedMetric">0</strong><small>／<span id="totalMetric">0</span> 題</small></article>
         <article class="metric card"><span class="label">累積答對率</span><strong id="accuracyMetric">—</strong><small id="attemptMetric">尚未作答</small></article>
         <article class="metric card"><span class="label">錯題本</span><strong id="wrongMetric">0</strong><small>需要重新挑戰</small></article>
-        <article class="metric card"><span class="label">收藏題目</span><strong id="favoriteMetric">0</strong><small>你的考前清單</small></article>
+        <article class="metric card metric-link" id="favoriteMetricCard" role="button" tabindex="0" aria-label="開啟收藏題庫"><span class="label">收藏題目</span><strong id="favoriteMetric">0</strong><small>查看你的考前清單 →</small></article>
       </div>
       <div class="two-col">
         <section class="card panel"><div class="panel-head"><div><span class="label">PRIORITY MAP</span><h2>必考程度</h2></div><span class="data-note">依 syllabus、作業與題型重複性</span></div><div id="priorityList" class="priority-list"></div></section>
@@ -156,5 +156,5 @@
   </main>
   <div class="modal" id="simulationModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close>×</button><span class="label">SIMULATION MODE</span><h2>建立限時模擬考</h2><label>題數<select id="simCount"><option>5</option><option>10</option><option>15</option></select></label><label>時間<select id="simMinutes"><option>10</option><option>20</option><option>30</option></select></label><button class="primary wide" id="startSimulation">開始模擬考</button></div></div>
   <div class="toast" id="toast"></div>
-  <script src="question-bank.js?v=20260720a"></script><script src="data.js?v=20260715b"></script><script src="answers.js?v=20260720c"></script><script src="app.js?v=20260720a"></script>
+  <script src="question-bank.js?v=20260720a"></script><script src="data.js?v=20260715b"></script><script src="answers.js?v=20260720c"></script><script src="app.js?v=20260721a"></script>
 </body></html>

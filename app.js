@@ -53,6 +53,13 @@ function revealAnswer(){const q=question(activeQuestion);state.answers[q.id]={se
 function locateQuestion(){const ch=$('#filterChapter').value,sec=$('#filterSection').value,num=+$('#filterNumber').value;if(ch==='all'||sec==='all'||!num){toast('請同時選擇 Chapter、題型與題號');return}const q=BANK.find(x=>x.chapter===+ch&&x.section===sec&&x.number===num);if(!q){toast('找不到這個題號');return}activeQuestion=q.id;renderQuestionList();renderQuestion(q.id)}
 
 function renderPractice(){renderQuestionList()}
+function openFavoriteBank(){
+  $('#filterChapter').value=$('#filterSection').value=$('#filterTopic').value=$('#filterAnswerStatus').value='all';
+  $('#filterNumber').value='';
+  $('#filterWrong').checked=$('#filterIncomplete').checked=false;
+  $('#filterFavorite').checked=true;
+  showView('practice');
+}
 function startSimulation(){const pool=BANK.filter(q=>q.status==='verified'&&q.section==='Multiple Choice'&&parseMC(q.text)),count=Math.min(+$('#simCount').value,pool.length),mins=+$('#simMinutes').value,ids=pool.slice().sort(()=>Math.random()-.5).slice(0,count).map(q=>q.id);simulation={ids,index:0,results:[],end:Date.now()+mins*60000};activeQuestion=ids[0];$('#simulationModal').classList.remove('open');showView('practice');renderQuestion(activeQuestion);clearInterval(timer);timer=setInterval(updateTimer,1000)}
 function updateTimer(){if(!simulation)return;const left=Math.max(0,simulation.end-Date.now()),m=Math.floor(left/60000),s=Math.floor(left%60000/1000),el=$('#simTimer');if(el)el.textContent=`${m}:${String(s).padStart(2,'0')}`;if(!left)finishSimulation()}
 function finishSimulation(){clearInterval(timer);const score=simulation.results.filter(x=>x.correct).length,total=simulation.ids.length;state.simulations.push({at:new Date().toISOString(),score,total});save();simulation=null;toast(`模擬考完成：${score}/${total}`);renderDashboard();renderQuestionList()}
@@ -90,6 +97,8 @@ document.addEventListener('click',e=>{
 $('#filterNumber').addEventListener('input',renderQuestionList);$('#locateQuestion').addEventListener('click',locateQuestion);
 $('#clearFilters').addEventListener('click',()=>{$('#filterChapter').value=$('#filterSection').value=$('#filterTopic').value=$('#filterAnswerStatus').value='all';$('#filterNumber').value='';$('#filterWrong').checked=$('#filterFavorite').checked=$('#filterIncomplete').checked=false;renderQuestionList()});
 $('#examDate').addEventListener('change',e=>{state.examDate=e.target.value;save();renderCountdown()});$('#nextAction').addEventListener('click',e=>{activeTopic=e.currentTarget.dataset.topic;showView('knowledge');renderTopic(activeTopic)});$('#resetDecision').addEventListener('click',()=>renderDecision());
+$('#favoriteMetricCard').addEventListener('click',openFavoriteBank);
+$('#favoriteMetricCard').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openFavoriteBank()}});
 $('#simulationBtn').addEventListener('click',()=>$('#simulationModal').classList.add('open'));$('#startSimulation').addEventListener('click',startSimulation);$('#themeBtn').addEventListener('click',()=>setTheme(state.theme==='light'?'dark':'light'));$('#themeSetting').addEventListener('click',()=>setTheme(state.theme==='light'?'dark':'light'));$('#menuBtn').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
 $$('[data-cheat-check]').forEach(box=>box.addEventListener('change',()=>{state.cheatCopied[box.dataset.cheatCheck]=box.checked;save();renderCheatSheet()}));
 $('#resetCheatProgress').addEventListener('click',()=>{state.cheatCopied={};save();renderCheatSheet();toast('Cheat Sheet 手抄進度已重設')});
