@@ -7,6 +7,7 @@
   <title>Statistics OS · Exam Edition</title>
   <link rel="stylesheet" href="styles.css?v=20260715b">
   <link rel="stylesheet" href="question-bank.css?v=20260715b">
+  <link rel="stylesheet" href="cheat-sheet.css?v=20260720a">
   <script>window.MathJax={tex:{inlineMath:[['\\(','\\)']]},startup:{typeset:false}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 </head>
@@ -24,7 +25,8 @@
       <a class="nav-link" href="#knowledge" data-view="knowledge"><span>02</span>Knowledge System</a>
       <a class="nav-link" href="#practice" data-view="practice"><span>03</span>Practice Center</a>
       <a class="nav-link" href="#strategy" data-view="strategy"><span>04</span>Exam Strategy</a>
-      <a class="nav-link" href="#settings" data-view="settings"><span>05</span>Settings</a>
+      <a class="nav-link" href="#cheatsheet" data-view="cheatsheet"><span>05</span>Cheat Sheet</a>
+      <a class="nav-link" href="#settings" data-view="settings"><span>06</span>Settings</a>
     </nav>
     <div class="sidebar-progress"><div><span>總學習進度</span><b id="sideProgressText">0%</b></div><div class="progress"><i id="sideProgress"></i></div><small>保存在此瀏覽器</small></div>
   </aside>
@@ -64,6 +66,88 @@
       <div class="two-col strategy-grid"><section class="card panel"><h2>高頻失分原因</h2><ul class="mistake-list" id="mistakeList"></ul></section><section class="card panel"><h2>時間分配</h2><div class="timeline"><p><b>第一輪 · 45%</b><span>先做題型明確、可直接套表的題目。</span></p><p><b>第二輪 · 35%</b><span>處理完整計算與輸出解讀。</span></p><p><b>檢查 · 20%</b><span>核對 df、尾端、單位與商業結論。</span></p></div></section></div>
       <section class="card panel"><div class="panel-head"><div><span class="label">CRASH PLAN</span><h2>考前衝刺清單</h2></div></div><div class="sprint-tabs"><button class="active" data-sprint="7">7 天</button><button data-sprint="3">3 天</button><button data-sprint="1">1 天</button><button data-sprint="60">60 分鐘</button></div><ol id="sprintPlan" class="sprint-plan"></ol></section>
     </section>
+    <section class="view" id="cheatsheet">
+      <div class="page-head cheat-head"><div><p class="eyebrow">TWO SHEETS · FOUR SIDES · HANDWRITTEN</p><h1>Cheat Sheet</h1><p>依老師公布的出題結構與 Chapters 12–18 題庫設計；這是手抄藍圖，不是縮小列印稿。</p></div><div class="cheat-progress-card"><span class="label">手抄進度</span><strong id="cheatProgressText">0 / 4 面</strong><div class="progress"><i id="cheatProgressBar"></i></div></div></div>
+      <section class="card cheat-brief"><div><span class="label">公布方向</span><h2>60% 選擇題＋40% 計算題</h2><p>若滿分 100：推估 30 題選擇題（每題 2 分）＋8 題計算題（每題 5 分）。計算題固定配置：Regression 2、Forecasting 2、Nonparametric 2、ANOVA 1、Chi-square 1。</p></div><div class="handwrite-spec"><b>建議手抄規格</b><span>A4 直式 · 每面 2 欄</span><span>邊界 8–10 mm · 欄距 8 mm</span><span>中文字高約 4 mm · 行距約 5–6 mm</span><span>公式可略小，但不要低於 3.5 mm</span></div></section>
+      <div class="cheat-toolbar" role="toolbar" aria-label="切換小抄頁面"><button class="active" data-cheat-side="all">四面總覽</button><button data-cheat-side="1">第 1 面 · Router</button><button data-cheat-side="2">第 2 面 · Regression</button><button data-cheat-side="3">第 3 面 · Forecast</button><button data-cheat-side="4">第 4 面 · Nonparametric</button><button class="cheat-reset" id="resetCheatProgress">重設勾選</button></div>
+
+      <article class="cheat-face card" data-cheat-face="1">
+        <header><div><span class="face-number">紙 1 · 正面</span><h2>第 1 面｜選擇題 Router＋必錯陷阱</h2><p>目的：30 秒內辨識方法；承接 60% 選擇題。</p></div><span class="copy-priority must">一定要抄</span></header>
+        <div class="cheat-columns">
+          <div>
+            <section class="cheat-block"><h3>① 題型 Router</h3><div class="cheat-flow"><b>先看 Y／問題</b><span>類別 counts → χ²</span><span>比較 3+ means → ANOVA</span><span>數值 Y＋X → Regression</span><span>依時間預測 → Forecasting</span><span>rank／median／非常態 → Nonparametric</span></div></section>
+            <section class="cheat-block"><h3>② 樣本結構決定工具</h3><table class="cheat-table"><tbody><tr><td>1 類別變數 vs 指定比例</td><td>χ² GOF</td></tr><tr><td>2 類別變數是否有關</td><td>χ² independence</td></tr><tr><td>3+ 獨立平均數</td><td>one-way ANOVA</td></tr><tr><td>treatment＋block</td><td>randomized block ANOVA</td></tr><tr><td>1 X / 多 X</td><td>simple / multiple regression</td></tr><tr><td>paired、只看方向</td><td>sign test</td></tr><tr><td>paired、可排名差值</td><td>Wilcoxon signed-rank</td></tr><tr><td>2 independent rank groups</td><td>Mann–Whitney</td></tr><tr><td>3+ independent rank groups</td><td>Kruskal–Wallis</td></tr><tr><td>兩組排名一致性</td><td>Spearman</td></tr></tbody></table></section>
+            <section class="cheat-block"><h3>③ 假設檢定固定骨架</h3><p class="formula-line">H₀ / H₁ → α → statistic＋df → p 或 critical → Reject / Do not reject H₀ → 回答商業問題</p><p class="trap"><b>用語：</b>不拒絕 H₀ ≠ 接受 H₀；顯著關聯 ≠ 因果。</p></section>
+          </div>
+          <div>
+            <section class="cheat-block"><h3>④ 高頻 MC 一行辨識</h3><ul class="dense-list"><li><b>factor</b>＝independent variable；<b>treatment</b>＝factor 的 level。</li><li><b>interaction</b>：一個 factor 的效果隨另一 factor level 改變。</li><li><b>ANOVA</b> 檢定 population means；F 顯著只代表至少一組不同。</li><li><b>SS</b> 是平方和；<b>MS=SS/df</b>，不是一般 mean。</li><li><b>residual</b>：e=y−ŷ；positive 表示實際值高於預測。</li><li><b>R²</b>：Y 的 sample variation 被模型解釋比例，不是因果或準確率。</li><li><b>overall F</b>：至少一個 βⱼ≠0；<b>individual t</b>：指定 βⱼ≠0。</li><li>增加 X：R² 不降；adjusted R² 可能下降。</li><li>Forecast α 大／window 小 → 對新資料反應快、較不平滑。</li><li>χ²、ANOVA F 都是右尾；regression slope t 通常雙尾。</li><li>Nonparametric ≠ 無假設；paired 和 independent 不可混用。</li></ul></section>
+            <section class="cheat-block"><h3>⑤ df / Tail 快查</h3><table class="cheat-table compact"><tbody><tr><td>χ² GOF</td><td>k−1−m；右尾</td></tr><tr><td>χ² independence</td><td>(r−1)(c−1)；右尾</td></tr><tr><td>ANOVA</td><td>k−1, n−k；右尾</td></tr><tr><td>Regression F</td><td>p, n−p−1；右尾</td></tr><tr><td>Regression t</td><td>n−p−1；通常雙尾</td></tr><tr><td>Kruskal–Wallis</td><td>k−1；右尾 χ²</td></tr></tbody></table></section>
+            <section class="cheat-block if-space"><h3>有空間再抄｜選項排除法</h3><p>先刪：單位錯、df 錯、把 sample 寫成 population、把「至少一組」寫成「全部」、把 association 寫成 causation 的選項。</p></section>
+          </div>
+        </div>
+        <footer><label class="copy-check"><input type="checkbox" data-cheat-check="1">我已用可讀大小手抄完第 1 面</label></footer>
+      </article>
+
+      <article class="cheat-face card" data-cheat-face="2">
+        <header><div><span class="face-number">紙 1 · 背面</span><h2>第 2 面｜Regression 計算題 × 2</h2><p>Ch 14–16：斜率、R²、t/F、multiple regression、選模與診斷。</p></div><span class="copy-priority must">最高優先</span></header>
+        <div class="cheat-columns">
+          <div>
+            <section class="cheat-block"><h3>① Simple Regression 核心</h3><p class="formula-stack">ŷ=b₀+b₁x<br>b₁=Sxy/Sxx；b₀=ȳ−b₁x̄<br>SST=Σ(y−ȳ)²<br>SSR=Σ(ŷ−ȳ)²<br>SSE=Σ(y−ŷ)²<br>SST=SSR+SSE<br>R²=SSR/SST=1−SSE/SST<br>r=sign(b₁)√R²；e=y−ŷ</p><p><b>b₁ 單位：</b>Y 單位 / X 單位；X 增 1，預測 Y 平均改變 b₁。</p></section>
+            <section class="cheat-block"><h3>② Regression ANOVA Table</h3><table class="cheat-table formula-table"><thead><tr><th>Source</th><th>SS</th><th>df</th><th>MS / F</th></tr></thead><tbody><tr><td>Regression</td><td>SSR</td><td>p</td><td>MSR=SSR/p</td></tr><tr><td>Error</td><td>SSE</td><td>n−p−1</td><td>MSE=SSE/(n−p−1)</td></tr><tr><td>Total</td><td>SST</td><td>n−1</td><td>F=MSR/MSE</td></tr></tbody></table><p>Overall H₀: β₁=…=βₚ=0；Reject → 至少一個 slope 有效。</p></section>
+            <section class="cheat-block"><h3>③ 係數推論</h3><p class="formula-stack">s=√MSE；SE(b₁)=s/√Sxx（simple）<br>tⱼ=bⱼ/SE(bⱼ), df=n−p−1<br>CI: bⱼ ± tα/2,df·SE(bⱼ)</p><p>pⱼ&lt;α → 控制其他 X 後，Xⱼ 與 Y 有顯著線性關係。</p></section>
+            <section class="cheat-block"><h3>④ 預測題工作流</h3><ol class="micro-steps"><li>寫完整 ŷ 式與單位。</li><li>代入每個 X；先乘後加。</li><li>報 point estimate。</li><li>若問 interval：mean response CI 比 individual prediction interval 窄。</li><li>檢查是否 extrapolation。</li></ol></section>
+          </div>
+          <div>
+            <section class="cheat-block"><h3>⑤ Multiple Regression</h3><p class="formula-stack">ŷ=b₀+b₁x₁+…+bₚxₚ<br>Adjusted R²=1−(1−R²)(n−1)/(n−p−1)</p><p><b>bⱼ：</b>其他 predictors 固定時，Xⱼ 增 1，ŷ 改變 bⱼ。</p><p><b>Dummy：</b>0 是 baseline；dummy coefficient＝相對 baseline 的 intercept 差。g 類需 g−1 個 dummy。</p></section>
+            <section class="cheat-block"><h3>⑥ 新增變數 / Partial F</h3><p class="formula-stack">F=[(SSEᵣ−SSE𝒻)/q] / [SSE𝒻/(n−p𝒻−1)]<br>q=p𝒻−pᵣ</p><p>Reduced SSE 一定 ≥ Full SSE。分母一定用 <b>full model MSE</b>。</p></section>
+            <section class="cheat-block"><h3>⑦ Diagnostics</h3><table class="cheat-table compact"><tbody><tr><td>Residual vs fitted 漏斗</td><td>變異數不等</td></tr><tr><td>U / 曲線</td><td>漏 x² / 非線性</td></tr><tr><td>時間殘差連續同號</td><td>正自相關</td></tr><tr><td>大 VIF / X 高相關</td><td>multicollinearity</td></tr><tr><td>離群且高 leverage</td><td>可能 influential</td></tr></tbody></table><p class="formula-line">DW d=Σ(eₜ−eₜ₋₁)²/Σeₜ²；d≈2 無自相關，d≈0 正，d≈4 負。</p></section>
+            <section class="cheat-block"><h3>⑧ 計算題最後 4 句</h3><p>Equation → test statistic / p → statistical conclusion → business interpretation（含單位、holding others constant）。</p></section>
+            <section class="cheat-block if-space"><h3>有空間再抄｜陷阱</h3><p>高 R² 不保證 model valid；整體 F 顯著不代表每個 X 顯著；觀察資料不證因果；不要把 Y/X 單位顛倒。</p></section>
+          </div>
+        </div>
+        <footer><label class="copy-check"><input type="checkbox" data-cheat-check="2">我已用可讀大小手抄完第 2 面</label></footer>
+      </article>
+
+      <article class="cheat-face card" data-cheat-face="3">
+        <header><div><span class="face-number">紙 2 · 正面</span><h2>第 3 面｜Forecasting × 2＋Chi-square × 1</h2><p>Forecasting 題庫最高頻：trend、seasonal、moving average、exponential smoothing。</p></div><span class="copy-priority must">一定要抄</span></header>
+        <div class="cheat-columns">
+          <div>
+            <section class="cheat-block"><h3>① Forecast 方法</h3><p class="formula-stack">Naive: Fₜ₊₁=Yₜ<br>k-MA: Fₜ₊₁=(Yₜ+…+Yₜ₋ₖ₊₁)/k<br>WMA: Fₜ₊₁=ΣwᵢYᵢ/Σwᵢ<br>ES: Fₜ₊₁=αYₜ+(1−α)Fₜ</p><ul class="dense-list"><li>WMA 最大權重給最新 actual。</li><li>ES 用本期 actual 更新「下一期」forecast。</li><li>α 大：反應快、較不平滑；α 小：反應慢、較平滑。</li><li>MA 有 trend 時會 lag。</li></ul></section>
+            <section class="cheat-block"><h3>② Trend / Seasonal</h3><p class="formula-stack">Trend: Tₜ=b₀+b₁t<br>b₁=[nΣtY−ΣtΣY]/[nΣt²−(Σt)²]<br>b₀=Ȳ−b₁t̄<br>Multiplicative: Forecast=Tₜ×Seasonal index</p><p>Seasonal index &gt;1：該季高於趨勢；四季 indices 平均約 1（總和約 4）。Deseasonalized Y=Y/index。</p></section>
+            <section class="cheat-block"><h3>③ Error 與選模</h3><p class="formula-stack">eₜ=Yₜ−Fₜ<br>ME=Σe/n（bias）<br>MAE=Σ|e|/n<br>MSE=Σe²/n<br>RMSE=√MSE<br>MAPE=Σ|e/Y|×100%/n</p><p>同資料、同 forecast periods 比較；MAE/MSE 越小越好。MAPE 遇 Y=0 不能用。</p></section>
+            <section class="cheat-block"><h3>④ Forecast 計算題檢查</h3><p>時間排序 → 標示 actual/forecast → 第一個可算期 → 權重方向 → 不偷用未來資料 → rounding 留到最後。</p></section>
+          </div>
+          <div>
+            <section class="cheat-block"><h3>⑤ Chi-square Router</h3><table class="cheat-table"><tbody><tr><td>Goodness-of-fit</td><td>1 個類別變數；是否符合指定比例</td></tr><tr><td>Independence</td><td>2 個類別變數；是否有關聯</td></tr></tbody></table><p>輸入是 <b>counts</b>。數字型原始值也可能先分成類別後使用 χ²。</p></section>
+            <section class="cheat-block"><h3>⑥ Expected Counts</h3><p class="formula-stack">GOF: Eᵢ=npᵢ；uniform E=n/k<br>Independence: Eᵢⱼ=(row total)(column total)/n<br>χ²=Σ(O−E)²/E</p><p>每個 cell 都要算；差越大 χ² 越大。期望次數原則上至少 5。</p></section>
+            <section class="cheat-block"><h3>⑦ Hypotheses / df / Decision</h3><p><b>GOF H₀：</b>population proportions 符合指定分配。df=k−1−m（m＝由樣本估計的參數數）。</p><p><b>Independence H₀：</b>兩變數 independent。df=(r−1)(c−1)。</p><p><b>右尾：</b>χ²&gt;critical 或 p&lt;α → Reject H₀。</p></section>
+            <section class="cheat-block"><h3>⑧ χ² 作答表格</h3><p>先畫 O / E / (O−E)²/E 三欄（列聯表則每格在旁寫 E）。最後報 χ²、df、p/critical、decision、情境結論。</p><p class="trap"><b>陷阱：</b>拒絕 independence 只代表 association，不代表 causation；percent 不可直接當 O。</p></section>
+            <section class="cheat-block if-space"><h3>有空間再抄｜題庫代表數字</h3><p>Uniform 3 類、n=150 → E=50；O=(40,60,50) → χ²=4。這組數字可當考場自我檢查模板。</p></section>
+          </div>
+        </div>
+        <footer><label class="copy-check"><input type="checkbox" data-cheat-check="3">我已用可讀大小手抄完第 3 面</label></footer>
+      </article>
+
+      <article class="cheat-face card" data-cheat-face="4">
+        <header><div><span class="face-number">紙 2 · 背面</span><h2>第 4 面｜Nonparametric × 2＋ANOVA × 1</h2><p>先由 paired / independent / groups / rank correlation 選方法，再寫排名步驟。</p></div><span class="copy-priority must">一定要抄</span></header>
+        <div class="cheat-columns">
+          <div>
+            <section class="cheat-block"><h3>① Nonparametric Router</h3><table class="cheat-table"><tbody><tr><td>1 sample / paired，只看 +/−</td><td>Sign test</td></tr><tr><td>paired differences，使用 rank</td><td>Wilcoxon signed-rank</td></tr><tr><td>2 independent groups</td><td>Mann–Whitney U</td></tr><tr><td>3+ independent groups</td><td>Kruskal–Wallis H</td></tr><tr><td>兩套 ranks 的關聯</td><td>Spearman rₛ</td></tr></tbody></table></section>
+            <section class="cheat-block"><h3>② Sign Test</h3><ol class="micro-steps"><li>差值＝After−Before；0 / tie 刪除。</li><li>n＝非 0 的 + 與 − 總數。</li><li>H₀:p=.5；X＝較少符號數（雙尾）。</li><li>large n：μ=n/2，σ=√n/2，z=(X±.5−n/2)/(√n/2)。</li><li>雙尾 p=2×tail。</li></ol></section>
+            <section class="cheat-block"><h3>③ Wilcoxon Signed-rank</h3><ol class="micro-steps"><li>d=After−Before；刪 d=0。</li><li>對 |d| 由小到大排名；ties 用平均 rank。</li><li>放回正負號，算 T⁺、T⁻。</li><li>test statistic T=min(T⁺,T⁻)。</li><li>查 n 的 critical；小 T 反對 H₀。</li></ol><p>需要 paired，且差值分配大致對稱。</p></section>
+            <section class="cheat-block"><h3>④ Spearman</h3><p class="formula-stack">dᵢ=rank X−rank Y<br>rₛ=1−6Σd²/[n(n²−1)]</p><p>同方向排名 → +；反方向 → −。有 ties 時先用 average rank；可用 rank 後的 Pearson correlation。</p></section>
+          </div>
+          <div>
+            <section class="cheat-block"><h3>⑤ Mann–Whitney / Kruskal–Wallis</h3><p><b>Mann–Whitney：</b>合併兩組排名，算 R₁、R₂。</p><p class="formula-stack">U₁=n₁n₂+n₁(n₁+1)/2−R₁<br>U₂=n₁n₂−U₁；U=min(U₁,U₂)<br>μU=n₁n₂/2；σU=√[n₁n₂(N+1)/12]</p><p><b>Kruskal–Wallis：</b>合併 k 組排名。</p><p class="formula-stack">H=[12/(N(N+1))]Σ(Rⱼ²/nⱼ)−3(N+1)<br>df=k−1<br>ties: C=1−Σ(t³−t)/(N³−N)；Hc=H/C</p></section>
+            <section class="cheat-block"><h3>⑥ One-way ANOVA</h3><p class="formula-stack">H₀: μ₁=…=μₖ<br>SST=SSTR+SSE<br>SSTR=Σnⱼ(ȳⱼ−ȳ)²<br>SSE=ΣΣ(yᵢⱼ−ȳⱼ)²<br>MSTR=SSTR/(k−1)<br>MSE=SSE/(n−k)<br>F=MSTR/MSE</p><table class="cheat-table compact"><tbody><tr><td>Treatment</td><td>df=k−1</td></tr><tr><td>Error</td><td>df=n−k</td></tr><tr><td>Total</td><td>df=n−1</td></tr></tbody></table></section>
+            <section class="cheat-block"><h3>⑦ Block / Post hoc</h3><p><b>Randomized block：</b>SST=SSTR+SSBlock+SSE；df error=(t−1)(b−1)。先控制 block variation，再檢定 treatment。</p><p class="formula-stack">Equal n Fisher LSD=tα/2,dfE√(2MSE/n)<br>Unequal n: LSD=t√[MSE(1/nᵢ+1/nⱼ)]</p><p>先有 significant overall F，才做 protected LSD。|ȳᵢ−ȳⱼ|&gt;LSD → pair different。</p></section>
+            <section class="cheat-block"><h3>⑧ ANOVA 陷阱</h3><p>F 大＝between signal / within noise 大；within estimate of σ² 不受 means 是否相等影響；between estimate 在 H₀ false 時會膨脹；結論只能先寫「not all means equal」。</p></section>
+            <section class="cheat-block if-space"><h3>有空間再抄｜Factorial</h3><p>分別檢定 Factor A main effect、Factor B main effect、A×B interaction。interaction 顯著時，主效果需搭配各 level 解讀。</p></section>
+          </div>
+        </div>
+        <footer><label class="copy-check"><input type="checkbox" data-cheat-check="4">我已用可讀大小手抄完第 4 面</label></footer>
+      </article>
+    </section>
     <section class="view" id="settings">
       <div class="page-head"><div><p class="eyebrow">SETTINGS</p><h1>學習資料與顯示設定</h1><p>所有紀錄只保存在目前瀏覽器，不會上傳。</p></div></div>
       <div class="settings-grid"><section class="card setting-card"><h2>外觀</h2><p>切換適合長時間閱讀的主題。</p><button class="secondary" id="themeSetting">切換 Light / Dark</button></section><section class="card setting-card"><h2>匯出進度</h2><p>下載 JSON 備份答題、收藏與設定。</p><button class="secondary" id="exportData">匯出學習資料</button></section><section class="card setting-card danger"><h2>重設進度</h2><p>清除作答紀錄、錯題、收藏和日期。</p><button class="danger-btn" id="resetData">清除所有資料</button></section></div>
@@ -72,5 +156,5 @@
   </main>
   <div class="modal" id="simulationModal" aria-hidden="true"><div class="modal-card"><button class="modal-close" data-close>×</button><span class="label">SIMULATION MODE</span><h2>建立限時模擬考</h2><label>題數<select id="simCount"><option>5</option><option>10</option><option>15</option></select></label><label>時間<select id="simMinutes"><option>10</option><option>20</option><option>30</option></select></label><button class="primary wide" id="startSimulation">開始模擬考</button></div></div>
   <div class="toast" id="toast"></div>
-  <script src="question-bank.js?v=20260720a"></script><script src="data.js?v=20260715b"></script><script src="answers.js?v=20260720c"></script><script src="app.js?v=20260715b"></script>
+  <script src="question-bank.js?v=20260720a"></script><script src="data.js?v=20260715b"></script><script src="answers.js?v=20260720c"></script><script src="app.js?v=20260720a"></script>
 </body></html>

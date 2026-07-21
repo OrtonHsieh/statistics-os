@@ -1,7 +1,8 @@
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
 const STORE='statisticsOS.exam.v3';
-const defaults={theme:'light',examDate:'',answers:{},favorites:[],simulations:[]};
+const defaults={theme:'light',examDate:'',answers:{},favorites:[],simulations:[],cheatCopied:{}};
 let state=Object.assign({},defaults,JSON.parse(localStorage.getItem(STORE)||'{}'));
+state.cheatCopied=state.cheatCopied||{};
 const CHAPTER_TOPIC={12:'chi-square',13:'anova',14:'simple-regression',15:'multiple-regression',16:'model-building',17:'forecasting',18:'nonparametric'};
 const BANK=FULL_QUESTIONS.map(q=>Object.assign({},q,{topic:CHAPTER_TOPIC[q.chapter]},VERIFIED_ANSWERS[q.id]||{}));
 let activeTopic=TOPICS[0].id,activeQuestion=BANK[0].id,selectedAnswer=null,simulation=null,timer=null;
@@ -12,7 +13,7 @@ const typeset=()=>window.MathJax?.typesetPromise?.().catch(()=>{});
 
 function toast(msg){const el=$('#toast');el.textContent=msg;el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1900)}
 function setTheme(v){state.theme=v;document.documentElement.dataset.theme=v;$('#themeBtn').textContent=v==='dark'?'☀':'☾';save()}
-function showView(id){$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.view===id));$('#sidebar').classList.remove('open');history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='practice')renderPractice()}
+function showView(id){$$('.view').forEach(v=>v.classList.toggle('active',v.id===id));$$('.nav-link').forEach(a=>a.classList.toggle('active',a.dataset.view===id));$('#sidebar').classList.remove('open');history.replaceState(null,'','#'+id);window.scrollTo({top:0,behavior:'smooth'});if(id==='dashboard')renderDashboard();if(id==='practice')renderPractice();if(id==='cheatsheet')renderCheatSheet()}
 function attempts(){return Object.values(state.answers)}
 function topicStats(id){const qs=BANK.filter(q=>q.topic===id),done=qs.filter(q=>state.answers[q.id]),correct=qs.filter(q=>state.answers[q.id]?.correct);return{total:qs.length,done:done.length,correct:correct.length,pct:qs.length?Math.round(done.length/qs.length*100):0}}
 function verifiedCount(){return BANK.filter(q=>q.status==='verified').length}
@@ -59,11 +60,22 @@ function finishSimulation(){clearInterval(timer);const score=simulation.results.
 function renderStrategy(){$('#methodTable').innerHTML=METHOD_TABLE.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join('')}</tr>`).join('');$('#mistakeList').innerHTML=COMMON_MISTAKES.map(x=>`<li>${x}</li>`).join('');renderSprint(7)}
 function renderSprint(k){$('#sprintPlan').innerHTML=SPRINT_PLANS[k].map(x=>`<li>${x}</li>`).join('');$$('[data-sprint]').forEach(b=>b.classList.toggle('active',b.dataset.sprint==k))}
 function renderSources(){const sourceErrors=BANK.filter(q=>q.status==='source-error').length;$('#sourceList').innerHTML=SOURCES.map(s=>`<div class="source-item"><b>${s[0]}</b><br><small>${s[1]}</small></div>`).join('')+`<div class="source-item"><b>Question bank audit</b><br><small>${BANK.length} questions restored with original English, original chapter, section, number and PDF page. ${verifiedCount()} answers independently verified; ${sourceErrors} source-error items explicitly flagged; 0 answers pending.</small></div>`}
-function init(){setTheme(state.theme);$('#examDate').value=state.examDate;$('#filterTopic').innerHTML+=TOPICS.map(t=>`<option value="${t.id}">Ch ${t.chapter} · ${t.title}</option>`).join('');renderDashboard();renderTopic(activeTopic);renderDecision();renderStrategy();renderSources();renderQuestionList();const hash=location.hash.slice(1);if(hash&&$(`#${hash}.view`))showView(hash)}
+function renderCheatSheet(){
+  const done=[1,2,3,4].filter(n=>state.cheatCopied[n]).length;
+  $$('[data-cheat-check]').forEach(box=>box.checked=!!state.cheatCopied[box.dataset.cheatCheck]);
+  $('#cheatProgressText').textContent=`${done} / 4 面`;
+  $('#cheatProgressBar').style.width=`${done*25}%`;
+}
+function showCheatSide(side){
+  $$('[data-cheat-side]').forEach(button=>button.classList.toggle('active',button.dataset.cheatSide===side));
+  $$('[data-cheat-face]').forEach(face=>face.hidden=side!=='all'&&face.dataset.cheatFace!==side);
+}
+function init(){setTheme(state.theme);$('#examDate').value=state.examDate;$('#filterTopic').innerHTML+=TOPICS.map(t=>`<option value="${t.id}">Ch ${t.chapter} · ${t.title}</option>`).join('');renderDashboard();renderTopic(activeTopic);renderDecision();renderStrategy();renderSources();renderQuestionList();renderCheatSheet();const hash=location.hash.slice(1);if(hash&&$(`#${hash}.view`))showView(hash)}
 
 document.addEventListener('click',e=>{
   const nav=e.target.closest('[data-view]');if(nav){e.preventDefault();showView(nav.dataset.view)}
   const go=e.target.closest('[data-go]');if(go)showView(go.dataset.go);
+  const cheatSide=e.target.closest('[data-cheat-side]');if(cheatSide)showCheatSide(cheatSide.dataset.cheatSide);
   const tt=e.target.closest('[data-topic]');if(tt)renderTopic(tt.dataset.topic);
   const mini=e.target.closest('[data-mini]');if(mini){const t=topic(activeTopic),fb=$('#miniFeedback');fb.style.display='block';fb.textContent=(+mini.dataset.mini===t.mini.answer?'正確。':'不對。')+t.mini.why}
   const dn=e.target.closest('[data-next]');if(dn){if(DECISION[dn.dataset.next])renderDecision(dn.dataset.next);else{const t=topic(dn.dataset.next),r=$('#decisionResult');r.style.display='block';r.innerHTML=`建議方法：<b>${t.title} · ${t.zh}</b>　<button class="text-btn" data-open-topic="${t.id}">查看主題 →</button>`}}
@@ -79,6 +91,8 @@ $('#filterNumber').addEventListener('input',renderQuestionList);$('#locateQuesti
 $('#clearFilters').addEventListener('click',()=>{$('#filterChapter').value=$('#filterSection').value=$('#filterTopic').value=$('#filterAnswerStatus').value='all';$('#filterNumber').value='';$('#filterWrong').checked=$('#filterFavorite').checked=$('#filterIncomplete').checked=false;renderQuestionList()});
 $('#examDate').addEventListener('change',e=>{state.examDate=e.target.value;save();renderCountdown()});$('#nextAction').addEventListener('click',e=>{activeTopic=e.currentTarget.dataset.topic;showView('knowledge');renderTopic(activeTopic)});$('#resetDecision').addEventListener('click',()=>renderDecision());
 $('#simulationBtn').addEventListener('click',()=>$('#simulationModal').classList.add('open'));$('#startSimulation').addEventListener('click',startSimulation);$('#themeBtn').addEventListener('click',()=>setTheme(state.theme==='light'?'dark':'light'));$('#themeSetting').addEventListener('click',()=>setTheme(state.theme==='light'?'dark':'light'));$('#menuBtn').addEventListener('click',()=>$('#sidebar').classList.toggle('open'));
+$$('[data-cheat-check]').forEach(box=>box.addEventListener('change',()=>{state.cheatCopied[box.dataset.cheatCheck]=box.checked;save();renderCheatSheet()}));
+$('#resetCheatProgress').addEventListener('click',()=>{state.cheatCopied={};save();renderCheatSheet();toast('Cheat Sheet 手抄進度已重設')});
 $('#copyTemplate').addEventListener('click',()=>navigator.clipboard.writeText($('.answer-template').innerText).then(()=>toast('作答模板已複製')).catch(()=>toast('請手動選取模板')));$('#exportData').addEventListener('click',()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(state,null,2)],{type:'application/json'}));a.download='statistics-os-progress.json';a.click();URL.revokeObjectURL(a.href)});$('#resetData').addEventListener('click',()=>{if(confirm('確定清除所有學習紀錄？')){localStorage.removeItem(STORE);location.reload()}});
 $('#globalSearch').addEventListener('input',e=>{const s=e.target.value.trim().toLowerCase();if(!s)return;const found=BANK.find(q=>(q.text+' '+q.exhibit+' '+q.source).toLowerCase().includes(s));if(found){activeQuestion=found.id;showView('practice');renderQuestion(found.id)}});document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();$('#globalSearch').focus()}});
 init();

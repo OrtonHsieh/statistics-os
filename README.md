@@ -8,6 +8,7 @@
 statistics OS/
 ├── index.html       # 頁面結構
 ├── styles.css       # Material / Google Docs 風格與 responsive UI
+├── cheat-sheet.css  # 四面手抄小抄的可讀版面與 responsive UI
 ├── data.js          # 主題、題目、答案、來源與教戰資料
 ├── question-bank.js # 由 7 份 PDF 產生的 684 題原文題庫
 ├── answers.js       # 已獨立驗算的答案覆寫層
@@ -51,7 +52,11 @@ python3 -m http.server 8000
 
 ## 如何重設進度
 
-網站內進入 **Settings → 清除所有資料**。這會刪除瀏覽器中 `statisticsOS.exam.v2` 的 localStorage。
+網站內進入 **Settings → 清除所有資料**。這會刪除瀏覽器中 `statisticsOS.exam.v3` 的 localStorage。
+
+## Cheat Sheet
+
+側邊欄的 **Cheat Sheet** 依兩張 A4、正反共四面設計，並按老師公布的計算題配置分面。每一面的手抄完成勾選同樣保存在目前瀏覽器的 localStorage。
 
 ## 如何部署
 
