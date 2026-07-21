@@ -20,6 +20,30 @@
   color: var(--blue);
 }
 
+.favorite-question-nav {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  margin: 18px 0 8px;
+  padding: 10px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+}
+
+.favorite-question-nav span {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 650;
+  text-align: center;
+}
+
+.favorite-question-nav button:disabled {
+  cursor: not-allowed;
+  opacity: .45;
+}
+
 .cheat-head {
   align-items: center;
 }
@@ -301,6 +325,15 @@
 }
 
 @media (max-width: 760px) {
+  .favorite-question-nav {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .favorite-question-nav span {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
   .cheat-progress-card {
     width: 100%;
   }
