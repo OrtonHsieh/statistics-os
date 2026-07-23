@@ -33,6 +33,7 @@ addMC(14,113,'B','The fitted equation is ŷ=11−x. At x=−3, ŷ=11−(−3)=14
 // computer-output exhibits independently recomputed from the source PDF.
 ['D','C','B','B','D','D','D','C','A','B','C','A','D','B','C','C','C','D','D','B','C','D','C','C','B','D','D','C','C','C','B','D','D','C','C','D','C','D','D','D','C','B','D','C','B','A','B','D','C','C','A','B','B','A','C','B','A','C','D','C','B','B','D','A','C','B','A','D','B','A','D','D','C','A','B','B','D','D','D','C','C','B','C','A','A'].forEach((a,i)=>addMC(15,i+1,a));
 addMC(15,60,'C','The estimated equation uses the values in the Coefficient column: Ŷ=145.321+25.625X₁−5.720X₂+0.823X₃. The values 48.682, 9.150, 3.575, and 0.183 are standard errors, not estimated coefficients.');
+addMC(15,65,'C','The estimated equation uses the Coefficient column: Ŷ=12.924−3.682X₁+45.216X₂. The values 4.425, 2.630, and 12.560 are standard errors, not estimated coefficients.');
 
 // Chapter 16: all answerable items independently checked. MC 8 is omitted
 // because its source lists t, F, interaction, and chi-square, but the correct
