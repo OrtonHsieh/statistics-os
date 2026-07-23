@@ -194,6 +194,13 @@ MC_TEXT_REPAIRS = {
         ('a.\nb. between-samples estimate of \nc. within-samples estimate of ',
          'a. x̄\nb. between-samples estimate of σ²\nc. within-samples estimate of σ²'),
     ],
+    (15, 60): [
+        ('a.\n\nb.\n\nc.\n\nd.',
+         'a. Y = β₀ + β₁X₁ + β₂X₂ + β₃X₃ + ε\n'
+         'b. E(Y) = β₀ + β₁X₁ + β₂X₂ + β₃X₃\n'
+         'c. Ŷ = 145.321 + 25.625X₁ − 5.720X₂ + 0.823X₃\n'
+         'd. Ŷ = 48.682 + 9.15X₁ + 3.575X₂ + 1.183X₃'),
+    ],
 }
 
 
