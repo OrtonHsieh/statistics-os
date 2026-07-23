@@ -21,7 +21,13 @@ addMC(13,6,'C','A completely randomized design randomly assigns experimental uni
 
 // Chapter 14: all definitions and numerical exhibits independently checked.
 ['A','A','C','D','A','C','A','C','B','A','D','C','A','B','A','D','C','D','A','B','B','C','A','B','B','B','B','D','A','B','B','C','D','B','A','D','A','D','D','A','C','D','B','A','B','A','B','D','A','D','D','B','B','B','C','D','D','D','B','D','D','B','D','B','A','C','A','B','B','C','C','C','C','B','D','A','D','A','B','A','C','B','B','A','D','D','A','D','B','A','C','D','B','B','C','D','C','D','A','C','A','B','D','D','A','A','C','A','D','A','C','B'].forEach((a,i)=>addMC(14,i+1,a));
-addMC(14,113,'B','Using y-hat = 11 - x, the point estimate at x = -3 is 14.');
+addMC(14,107,'A','The slope is b₁=Sxy/Sxx=−8/8=−1.');
+addMC(14,108,'C','Here x̄=16/4=4 and ȳ=28/4=7. Therefore b₀=ȳ−b₁x̄=7−(−1)(4)=11.');
+addMC(14,109,'A','SSR=SST−SSE=42−34=8, so R²=SSR/SST=8/42=0.190476≈0.1905. A coefficient of determination cannot be negative in this intercept model.');
+addMC(14,110,'D','The correlation has the slope’s negative sign: r=−√R²=−√0.190476=−0.4364.');
+addMC(14,111,'A','For simple linear regression, error df=n−2=2. Thus MSE=SSE/(n−2)=34/2=17.');
+addMC(14,112,'C','The fitted equation is ŷ=11−x. At x=3, ŷ=11−3=8.');
+addMC(14,113,'B','The fitted equation is ŷ=11−x. At x=−3, ŷ=11−(−3)=14.');
 
 // Chapter 15: all definitions, model equations, degrees of freedom, and
 // computer-output exhibits independently recomputed from the source PDF.
