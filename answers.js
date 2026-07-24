@@ -39,6 +39,7 @@ addMC(15,65,'C','The estimated equation uses the Coefficient column: Ŷ=12.924�
 // because its source lists t, F, interaction, and chi-square, but the correct
 // Durbin-Watson test is not among the choices.
 ['A','D','B','D','B','B','B',null,'C','B','C','B','D','D','C','B','D','A','A','B','B','B','D','B','A','C','D','A','D','B','C','A','A','D','D','D','D','B','A','C','A','A','D','C','B','B','B','A'].forEach((a,i)=>{if(a)addMC(16,i+1,a)});
+addMC(16,35,'D','The estimated equation uses the values in the Coefficient column: Ŷ=145+20X₁−18X₂+4X₃. The values 29, 5, 6, and 4 are standard errors, not estimated coefficients.');
 VERIFIED_ANSWERS['ch16-mc-008']={status:'source-error',confidence:'high',answer:'No valid option',explanation:'The correct procedure is the Durbin-Watson test, but it is absent from choices A-D in the professor-provided source PDF.'};
 
 // Chapter 17: all 37 MC items independently definition-checked or recomputed.
